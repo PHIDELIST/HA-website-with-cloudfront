@@ -1,2 +1,2 @@
 # HA-website-with-cloudfront
-![Infastructure design](/main/design/HA-WebApp.png)
+![Infastructure design](https://github.com/PHIDELIST/HA-website-with-cloudfront/blob/main/design/HA-WebApp.png)
