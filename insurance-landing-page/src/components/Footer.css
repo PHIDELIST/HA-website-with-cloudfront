@@ -1,0 +1,65 @@
+#FooterMain{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: hsl(0, 0%, 98%);
+    margin-top: 3rem;
+    background-image: url(../assets/bg-pattern-footer-desktop.svg);
+}
+#FooterHeader{
+    display: flex;
+    flex-direction: row;
+    gap: 30rem;
+
+}
+#FooterContent{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-between;
+    font-family: Karla;
+    font-size: 10px;
+}
+#OurCompany{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 5px;
+    color: hsl(273, 4%, 51%); 
+}
+#OurCompany h4{
+    color: hsl(270, 9%, 17%); 
+}
+#HelpMe{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 5px;
+    color: hsl(273, 4%, 51%);  
+}
+#HelpMe h4{
+    color: hsl(270, 9%, 17%); 
+}
+
+#Contact{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 5px;
+    color: hsl(273, 4%, 51%);
+    
+}
+#Contact h4{
+    color: hsl(270, 9%, 17%); 
+}
+#Others{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 5px;
+    color: hsl(273, 4%, 51%);
+   
+}
+#Others h4{
+    color: hsl(270, 9%, 17%); 
+}

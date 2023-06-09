@@ -1,0 +1,28 @@
+#Title h2{
+    font-size: 40px;
+    margin-left: 15px;
+}
+#Content img{
+    width: 80px;
+}
+#Content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+    padding: 10px;
+}
+#Lightening{
+    display: flex;
+    flex-direction: column;
+   
+}
+#Dollar{
+    display: flex;
+    flex-direction: column;
+}
+#People{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,45 @@
+#Main{
+    display: flex;
+    flex-direction: row;
+    background-color: hsl(256, 26%, 20%);
+    height: 400px;
+    background-image: url(../assets/bg-pattern-intro-left-desktop.svg);
+    
+    
+}
+#LeftContainer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+    margin-right: 150px;
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+   
+}
+#LeftContainer h1{
+    font-family: DM Serif Display;
+    font-weight: 700;
+    font-size: 3rem;
+}
+#btnPeople{
+    border-radius: 3px;
+    padding: 5px;
+    width: 120px;
+    border-style: 1px hsl(0, 0%, 98%);
+    color: hsl(0, 0%, 98%);
+    background-color: hsl(256, 26%, 20%);
+}
+#btnPeople:hover{
+    background-color: hsl(0, 0%, 98%);
+    color:hsl(256, 26%, 20%);
+}
+
+#RightContainerImg img{
+    width: 400px;
+    margin-top: 25px;
+    margin-right: 50px;
+    background-image: url(../assets/bg-pattern-intro-right-desktop.svg);
+
+
+}
