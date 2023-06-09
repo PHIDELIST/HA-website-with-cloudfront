@@ -1,6 +1,6 @@
 FROM node:16.18
 
-ENV PORT=5173
+ENV PORT=3000
 
 COPY . /insurance-landing-page
 WORKDIR /insurance-landing-page
