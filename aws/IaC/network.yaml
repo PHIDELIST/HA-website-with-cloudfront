@@ -276,18 +276,25 @@ Resources:
 ###########
     # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html
   ALBsecurityGroup:
+  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
-      GroupDescription: Security Group allowing HTTP traffic from internet to the ALB
+      GroupDescription: Security Group allowing HTTP/HTTPS traffic from internet to the ALB
       VpcId: !Ref InsuranceVPC
-      Tags:
-        - Key: Name
-          Value: ALBSecurityGroup
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0
+          Description: INTERNET HTTP
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+          Description: INTERNET HTTPS
+      Tags:
+        - Key: Name
+          Value: InsuranceAlbSecurityGroup
 
   AppInstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
@@ -381,6 +388,12 @@ Outputs:
     Value: !Ref AppInstanceSecurityGroup
     Export:
       Name: "AppInstanceSecurityGroupID"
+      
+  ALBsecurityGroupID:
+    Description: "The Security Group ID for the InsuranceALB Security Group"
+    Value: !Ref ALBsecurityGroup
+    Export:
+      Name: "ALBsecurityGroupID"
   
   
   EFSMountTargetSecurityGroupID:
@@ -412,6 +425,16 @@ Outputs:
     Value: !Ref AppSubnet2
     Export:
       Name: "AppSubnet2"
+  PublicSubnet1ID:
+    Description: "Subnet Id for public Subnet 1"
+    Value: !Ref PublicSubnet1ID
+    Export:
+      Name: "PublicSubnet1"
+  PublicSubnet2ID:
+    Description: "Subnet Id for public Subnet 2"
+    Value: !Ref PublicSubnet2
+    Export:
+      Name: "PublicSubnet2ID"
 
   DBSubnetGroup:
     Description: "db subnet group name"
@@ -420,8 +443,8 @@ Outputs:
       Name: "DBSubnetGroup"
 
 
-  VPCID:
+  InsuranceVPCID:
     Description: "The VPC ID for the Insurance"
     Value: !Ref InsuranceVPC
     Export:
-      Name: "VPCID"
+      Name: "InsuranceVPCID"

@@ -58,6 +58,7 @@ Resources:
       PubliclyAccessible: true
       VPCSecurityGroups:
         - !ImportValue RDSSecurityGroupID
+        - !ImportValue AppInstanceSecurityGroupID
 
   ReadReplica:
     Type: AWS::RDS::DBInstance

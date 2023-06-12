@@ -9,6 +9,7 @@ Resources:
         InstanceType: t2.micro
         SecurityGroupIds:
           - !ImportValue AppInstanceSecurityGroupID
+          - !ImportValue ALBsecurityGroupID
           - !ImportValue RDSSecurityGroupID
         UserData: !Base64 |
           #!/bin/bash
@@ -29,6 +30,7 @@ Resources:
       VPCZoneIdentifier:
         - !ImportValue AppSubnet1
         - !ImportValue AppSubnet2
+      TargetGroupARNs: !ImportValue BackendTGArn
       Tags:
         - Key: Name
           Value: InsuranceAutoScalingGroup
