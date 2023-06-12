@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  InsuranceLaunchTemplate:
+    Type: 'AWS::EC2::LaunchTemplate'
+    Properties:
+      LaunchTemplateName: InsuranceLaunchTemplate
+      LaunchTemplateData:
+        ImageId: ami-0261755bbcb8c4a84
+        InstanceType: t2.micro
+        SecurityGroupIds:
+          - !ImportValue AppInstanceSecurityGroupID
+          - !ImportValue RDSSecurityGroupID
+        UserData: !Base64 |
+          #!/bin/bash
+          sudo apt update
+          sudo apt-get install apache2
+          sudo service apache2 restart
+
+        
+  InsuranceAutoScalingGroup:
+    Type: 'AWS::AutoScaling::AutoScalingGroup'
+    Properties:
+      LaunchTemplate:
+        LaunchTemplateId: !Ref InsuranceLaunchTemplate
+        Version: !GetAtt InsuranceLaunchTemplate.LatestVersionNumber # Specify the same version as in the Launch Template
+      MinSize: 2
+      MaxSize: 4
+      DesiredCapacity: 2
+      VPCZoneIdentifier:
+        - !ImportValue AppSubnet1
+        - !ImportValue AppSubnet2
+      Tags:
+        - Key: Name
+          Value: InsuranceAutoScalingGroup
+          PropagateAtLaunch: true
+
+Outputs:
+  AutoScalingGroupName:
+    Description: The name of the Auto Scaling Group
+    Value: !Ref InsuranceAutoScalingGroup
+    Export:
+      Name: AutoScalingGroupName

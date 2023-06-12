@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 import './SignUpPage.css'
 import PeoplePhoto from '../assets/image-intro-desktop.jpg'
 import { Link } from 'react-router-dom';
-// import { useForm } from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 function SignUpPage() {
