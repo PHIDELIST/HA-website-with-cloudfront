@@ -324,36 +324,6 @@ Resources:
           FromPort: 3306
           ToPort: 3306
           SourceSecurityGroupId: !Ref AppInstanceSecurityGroup
-        
-
-  EFSMountTargetSecurityGroup:
-    Type: 'AWS::EC2::SecurityGroup'
-    Properties:
-      GroupDescription: Security Group allowing traffic between EFS Mount Targets and Amazon EC2 instances
-      VpcId: !Ref InsuranceVPC
-      Tags:
-        - Key: Name
-          Value: EFSMountTargetSecurityGroup
-      SecurityGroupIngress:
-        - IpProtocol: tcp
-          SourceSecurityGroupId: !Ref AppInstanceSecurityGroup
-          FromPort: 80
-          ToPort: 80
-
-  EFSSecurityGroup:
-    Type: 'AWS::EC2::SecurityGroup'
-    Properties:
-      GroupDescription: Security Group allowing traffic between EFS Mount Targets and EFS
-      VpcId: !Ref InsuranceVPC
-      Tags:
-        - Key: Name
-          Value: EFSSecurityGroup
-      SecurityGroupIngress:
-        - IpProtocol: tcp
-          SourceSecurityGroupId: !Ref EFSMountTargetSecurityGroup
-          FromPort: 2049
-          ToPort: 2049
-
 
 
 
@@ -395,18 +365,6 @@ Outputs:
     Export:
       Name: "ALBsecurityGroupID"
   
-  
-  EFSMountTargetSecurityGroupID:
-    Description: "The Security Group ID for the Insurance EFS Mount Target"
-    Value: !Ref EFSMountTargetSecurityGroup
-    Export:
-      Name: "EFSMountTargetSecurityGroupID"
-
-  EFSecurityGroupID:
-    Description: "The Security Group ID for the Insurance EFS "
-    Value: !Ref EFSSecurityGroup
-    Export:
-      Name: "EFSSecurityGroupID"
 
   RDSSecurityGroupID:
     Description: "The Security Group ID for the Insurance RDS cluster"

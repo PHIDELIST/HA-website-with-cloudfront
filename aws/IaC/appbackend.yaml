@@ -10,7 +10,8 @@ Resources:
         SecurityGroupIds:
           - !ImportValue AppInstanceSecurityGroupID
           - !ImportValue ALBsecurityGroupID
-          - !ImportValue RDSSecurityGroupID
+          - !ImportValue RDSSecurityGroupID 
+          - !ImportValue EFSMountTargetSecurityGroupID
         UserData: !Base64 |
           #!/bin/bash
           sudo apt update
